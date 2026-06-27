@@ -2,6 +2,16 @@ const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
 
+let playerScore = 0;
+let machineScore = 0;
+
+const container = document.getElementById("container");
+const buttons = document.querySelectorAll('button');
+const playerScoreBoard = document.getElementById('player_score')
+const roundResultBoard = document.getElementById('round_result')
+const machineScoreBoard = document.getElementById('machine_score')
+
+
 function getComputerChoice(){
 	//there are three choices and the rand is always lower than max (4)
 	let rand = Math.floor(Math.random() * (4 - 1) + 1); 
@@ -15,53 +25,62 @@ function getComputerChoice(){
 	}
 }
 
-function getHumanChoice(){
-	const userInput = prompt("Rock , Paper , Scissors ?")
-	return userInput;
-}
-
-function playRound(humanChoice, computerChoice){
-	switch (humanChoice){
+function playRound(playerChoice, computerChoice){
+	switch (playerChoice){
 	case rock:
-		return computerChoice == scissors ?  1 : (computerChoice == rock ? null : 0);
+		return computerChoice == scissors ?  "win" : (computerChoice == rock ? "draw" : "lost");
 	case paper:
-		return computerChoice == rock ?  1 : (computerChoice == paper ? null : 0);
+		return computerChoice == rock ?  "win" : (computerChoice == paper ? "draw" : "lost");
 	case scissors:
-		return computerChoice == paper ?  1 : (computerChoice == scissors ? null : 0);
+		return computerChoice == paper ?  "win" : (computerChoice == scissors ? "draw" : "lost");
 	default:
 		return null;
 	}
 }
 
-function playGame(){
-	let humanScore = 0;
-	let machineScore = 0;
-	let rounds = 5;
-
-	let humanChoice = "";
-	let computerChoice = "";
-
-	for (let i = 0; i < rounds; i++){
-		humanChoice = getHumanChoice();
-	 	computerChoice = getComputerChoice();
-	 	console.log(humanChoice, computerChoice);
-		result = playRound(humanChoice.toLowerCase(), computerChoice.toLowerCase());
-
-		if (result == 0){
-			machineScore += 1;
-		}else if (result === null){
-			rounds += 1;
-		}else {
-			humanScore += 1;
-		}
-
+function displayGameResult(playerScore, machineScore){
+	const resultBoard = document.createElement('div')
+	if (playerScore === 5){
+		resultBoard.textContent = "Player Win!";
+		resetGame();
+	}else if (machineScore === 5){
+		resultBoard.textContent =  "Machine Win!"
+		resetGame();
 	}
-	if (humanScore > machineScore){
-		console.log("You Win!")
-	}else{
-		console.log("You Lost!")
-	}
-	console.log(humanScore, machineScore);
+	container.appendChild(resultBoard)
 }
 
-playGame();
+function resetGame(){
+	playerScore = 0
+	machineScore = 0
+	/*playerScoreBoard.textContent = playerScore;
+	machineScoreBoard.textContent = machineScore;
+	roundResultBoard.textContent = "";*/
+}
+
+function playGame(event){
+	let playerChoice = "";
+	let computerChoice = "";
+
+	playerChoice = event.target.id;
+ 	computerChoice = getComputerChoice();
+	let result = playRound(playerChoice.toLowerCase(), computerChoice.toLowerCase());
+
+	if (result === "win"){
+		machineScore += 1;
+	}else if (result === "lost"){
+		playerScore += 1;
+	}
+
+	playerScoreBoard.textContent = playerScore;
+	machineScoreBoard.textContent = machineScore;
+	roundResultBoard.textContent = result;
+	
+	displayGameResult(playerScore, machineScore); 
+}
+
+buttons.forEach((button) => {
+	button.addEventListener("click", playGame)
+})
+
+
