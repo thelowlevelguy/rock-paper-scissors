@@ -7,7 +7,6 @@ let machineScore = 0;
 let playerWins = 0;
 let machineWins = 0;
 
-const container = document.getElementById("container");
 const buttons = document.querySelectorAll('button');
 const playerScoreBoard = document.getElementById('player_score')
 const roundResultBoard = document.getElementById('round_result')
