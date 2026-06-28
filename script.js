@@ -4,12 +4,16 @@ const scissors = "scissors";
 
 let playerScore = 0;
 let machineScore = 0;
+let playerWins = 0;
+let machineWins = 0;
 
 const container = document.getElementById("container");
 const buttons = document.querySelectorAll('button');
 const playerScoreBoard = document.getElementById('player_score')
 const roundResultBoard = document.getElementById('round_result')
 const machineScoreBoard = document.getElementById('machine_score')
+const playerWinsBaord = document.getElementById("player_victories")
+const machineWinsBoard = document.getElementById("machine_victories")
 
 
 function getComputerChoice(){
@@ -41,21 +45,22 @@ function playRound(playerChoice, computerChoice){
 function displayGameResult(playerScore, machineScore){
 	const resultBoard = document.createElement('div')
 	if (playerScore === 5){
-		resultBoard.textContent = "Player Win!";
+		playerWins += 1;
+		playerWinsBaord.textContent = `Player : ${playerWins}`;
 		resetGame();
 	}else if (machineScore === 5){
-		resultBoard.textContent =  "Machine Win!"
+		machineWins += 1;
+		machineWinsBoard.textContent = `Machine : ${machineWins}`;
+		//resultBoard.textContent =  "Machine Win!"
 		resetGame();
 	}
-	container.appendChild(resultBoard)
 }
 
 function resetGame(){
 	playerScore = 0
 	machineScore = 0
-	/*playerScoreBoard.textContent = playerScore;
+	playerScoreBoard.textContent = playerScore;
 	machineScoreBoard.textContent = machineScore;
-	roundResultBoard.textContent = "";*/
 }
 
 function playGame(event){
@@ -74,7 +79,6 @@ function playGame(event){
 
 	playerScoreBoard.textContent = playerScore;
 	machineScoreBoard.textContent = machineScore;
-	roundResultBoard.textContent = result;
 	
 	displayGameResult(playerScore, machineScore); 
 }
