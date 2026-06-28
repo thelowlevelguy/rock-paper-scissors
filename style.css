@@ -1,0 +1,52 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #440F8F;
+	color: #fff;
+	font-family: roboto, sans-serif;
+}
+
+#container{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.opponents, 
+.score_match,
+.bottom_section{
+	display: flex;
+	padding: 80px;
+	font-size: 48px;
+} 
+
+.score_match .title {
+	margin: 0 100px;
+}
+
+.bottom_section #choices {
+	margin: 0 150px;
+}
+
+.opponents > div {
+	margin: 0 100px;
+}
+
+
+button {
+	background: none;
+	border: #fff;
+	background-color: yellow;
+	padding : 12px 24px;
+	font-size: 32px;
+	font-weight: 800;
+	color : #000;
+	border-radius: 10px;
+
+}
+
+.unicode {
+	font-size: 10rem;
+}
