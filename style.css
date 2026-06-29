@@ -12,22 +12,37 @@ body{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
 }
 
 .opponents, 
 .score_match,
 .bottom_section{
 	display: flex;
-	padding: 80px;
+	padding: 70px;
 	font-size: 48px;
+	font-weight: 500;
+	margin-bottom: 40px;
 } 
+
+.score_match{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.opponents {
+	border: 30px solid yellow;
+	border-radius: 10px;
+
+}
 
 .score_match .title {
 	margin: 0 100px;
 }
 
 .bottom_section #choices {
-	margin: 0 150px;
+	margin: 0 100px;
 }
 
 .opponents > div {
@@ -49,7 +64,7 @@ button {
 
 #player_victories, #machine_victories{
 	padding: 12px 24px;
-	border: 2px solid white;
+	border: 5px solid yellow;
 	border-radius: 10px;
 }
 
@@ -57,20 +72,21 @@ button {
 	font-size: 15rem;
 }
 
-.player .unicode {
-	 animation: shakePlayer 0.6s forwards 2; 
+.shakePlayer {
+	 animation: shakePlayer 0.3s forwards 2; 
 }
 
-.machine .unicode {
-	 animation: shakeMachine 0.6s forwards 2; 
+.shakeMachine {
+	 animation: shakeMachine 0.3s forwards 2; 
 }
 
 @keyframes shakePlayer {
-	  0% { transform: rotate(-70deg); }
-	  50% { transform: rotate(0deg); }
+	  0% { transform:  rotate(-70deg); }
+	  50% { transform: translate(10px, 100px) rotate(0deg); }
 }
 
 @keyframes shakeMachine {
 	  0% { transform: rotate(70deg); }
-	  50% { transform: rotate(0deg); }
+	  50% { transform: translate(10px, 100px) rotate(0deg); }
+
 }

@@ -13,6 +13,8 @@ const roundResultBoard = document.getElementById('round_result')
 const machineScoreBoard = document.getElementById('machine_score')
 const playerWinsBaord = document.getElementById("player_victories")
 const machineWinsBoard = document.getElementById("machine_victories")
+const playerHands = document.getElementById("player-hands")
+const machineHands = document.getElementById("machine-hands") 
 
 
 function getComputerChoice(){
@@ -50,9 +52,30 @@ function displayGameResult(playerScore, machineScore){
 	}else if (machineScore === 5){
 		machineWins += 1;
 		machineWinsBoard.textContent = `Machine : ${machineWins}`;
-		//resultBoard.textContent =  "Machine Win!"
 		resetGame();
 	}
+}
+
+function handleGameHands(playerChoice, computerChoice) {
+
+	
+
+	/*for (const hand of playerHands.children){
+		if (hand.getAttribute("id").includes(playerChoice)){
+			setTimeout(() =>{
+				hand.style.hidden = false;
+			}, 400)
+		}
+	}
+
+	for (const hand of machineHands.children){
+		if (hand.getAttribute("id").includes(computerChoice)){
+			setTimeout(() =>{
+				hand.style.hidden = false;
+			}, 400)
+		}
+	}*/
+	
 }
 
 function resetGame(){
@@ -78,9 +101,23 @@ function playGame(event){
 
 	playerScoreBoard.textContent = playerScore;
 	machineScoreBoard.textContent = machineScore;
-	
 	displayGameResult(playerScore, machineScore); 
 }
+
+
+
+buttons.forEach((button) => {
+	button.addEventListener('click', () => {
+ 		 document.getElementById('player rock').classList.add('shakePlayer');
+	});
+
+	// Remove the class as soon as the animation ends
+	document.getElementById('player rock').addEventListener('animationend', () => {
+  		document.getElementById('player rock').classList.remove('shakePlayer');
+	});
+})
+
+
 
 buttons.forEach((button) => {
 	button.addEventListener("click", playGame)
