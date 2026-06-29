@@ -16,16 +16,17 @@ body{
 }
 
 .opponents, 
-.score_match,
-.bottom_section{
+.score-match,
+.bottom-section{
 	display: flex;
 	padding: 70px;
 	font-size: 48px;
 	font-weight: 500;
 	margin-bottom: 40px;
+
 } 
 
-.score_match{
+.score-match{
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding: 20px;
@@ -37,11 +38,11 @@ body{
 
 }
 
-.score_match .title {
+.score-match .title {
 	margin: 0 100px;
 }
 
-.bottom_section #choices {
+.bottom-section #choices {
 	margin: 0 100px;
 }
 
@@ -62,7 +63,7 @@ button {
 
 }
 
-#player_victories, #machine_victories{
+#player-victories, #machine-victories{
 	padding: 12px 24px;
 	border: 5px solid yellow;
 	border-radius: 10px;
